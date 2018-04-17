@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Borrar Usuario</h1>
-        <form action=""  method="post">
+        <form action="ListadoUsuario.php?borrado=true"  method="post">
 
 
         Nombre:<input type="text" name="nombre" value="">

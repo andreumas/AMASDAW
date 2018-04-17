@@ -7,7 +7,7 @@
   <body>
 
 
-<form action="ListadoUsuario.php"  method="post">
+<form action="ListadoUsuario.php?insertado=true"  method="post">
 
 
 Nombre:<input type="text" name="nombre" value="">
