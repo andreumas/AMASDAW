@@ -7,7 +7,7 @@
   <body>
 <!-- Listar usuarios -->
 <form action="ListadoUsuario.php?listar=true" method="POST">
-<input type="submit" value="LISTAR USUARIOS">
+<input type="submit" value="LISTAR USUARIOS" >
 </form>
 
     <?php
@@ -48,6 +48,13 @@
                   echo "<table>" . $fila['id']." <tr> ".$fila['nombre']." <tr> ".$fila['apellidos']." <tr> ".$fila['edad']." <tr> ".$fila['curso']." <tr> ".$fila['puntuacion'];
                                                           }
           }
+
+          // Comprobar si està vacio
+        if (empty($_POST['nombre'] && $_POST['apellidos'] && $_POST['edad'] && $_POST['curso'])) {
+        echo "<h1>"."Algun campo esta vacio" . "</h1>";
+                                              }
+
+
       }//cierre funcion insertado
 
 
@@ -82,6 +89,14 @@ function borrado(){
            echo "<table>" . $fila['id']." <tr> ".$fila['nombre']." <tr> ".$fila['apellidos']." <tr> ".$fila['edad']." <tr> ".$fila['curso']." <tr> ".$fila['puntuacion'];
                                                    }
       }
+
+      // Comprobar si està vacio
+    if (empty($_POST['nombre'] && $_POST['apellidos'] && $_POST['edad'] && $_POST['curso'])) {
+    echo "<h1>"."Algun campo esta vacio" . "</h1>";
+                                          }
+
+
+
       }//cierre funcion borrado
 
 //Funcion listar
@@ -102,7 +117,11 @@ function listar(){
                                }
            while ($fila=$resultado->fetch_assoc()) {
            echo "<table>" . $fila['id']." <tr> ".$fila['nombre']." <tr> ".$fila['apellidos']." <tr> ".$fila['edad']." <tr> ".$fila['curso']." <tr> ".$fila['puntuacion'];
-                                                   }
+                                 }
+
+
+
+
       }//cierre funcion listar
 
 //tratamiento de datos
@@ -117,10 +136,7 @@ if (isset($_GET['actualizado'])) {
      listar();
 }
 
-// Comprobar si està vacio
-    if (empty($_POST['nombre'] && $_POST['apellidos'] && $_POST['edad'] && $_POST['curso'])) {
-      echo "<h1>"."Algun campo esta vacio" . "</h1>";
-                 }
+
 
 
 $conexion->close();
