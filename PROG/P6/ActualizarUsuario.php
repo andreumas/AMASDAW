@@ -7,9 +7,9 @@
   <body>
 
 <h1>Actualizar Usuario</h1>
-    <form action=""  method="post">
+    <form action="ListadoUsuario.php?actualizado=true"  method="post">
 
-
+    ID : <input type="text" name="id">
     Nombre:<input type="text" name="nombre" value="">
     Apellidos:<input type="text" name="apellidos" value="">
     Edad:<input type="text" name="edad" value="">

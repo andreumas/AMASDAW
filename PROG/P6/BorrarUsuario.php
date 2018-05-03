@@ -8,7 +8,7 @@
     <h1>Borrar Usuario</h1>
         <form action="ListadoUsuario.php?borrado=true"  method="post">
 
-
+        ID : <input type="text" name="id">
         Nombre:<input type="text" name="nombre" value="">
         Apellidos:<input type="text" name="apellidos" value="">
         Edad:<input type="text" name="edad" value="">

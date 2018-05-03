@@ -69,14 +69,15 @@ function borrado(){
 
       //Lo que tiene que mostrar por pantalla
       //Variables insertivas
+      $id=$_POST['id'];
       $nom=$_POST['nombre'];
       $ape=$_POST['apellidos'];
       $edad=$_POST['edad'];
       $curso=$_POST['curso'];
       $puntu=$_POST['puntua'];
 
-      $info = "DELETE FROM usuarios (nombre,apellidos,edad,curso,puntuacion)
-                VALUES ('$nom','$ape','$edad','$curso','$puntu')";
+
+      $info = "DELETE FROM usuarios WHERE id=$id ";
       $resultado=$conexion->query("SELECT * FROM usuarios ORDER BY id" );
 
       if ($conexion->query($info) === TRUE) {
@@ -124,6 +125,50 @@ function listar(){
 
       }//cierre funcion listar
 
+
+
+      function actualizado(){
+          //Conexion a base de datos y control de errores
+
+
+          $conexion= new mysqli("localhost","root","root","juegos");
+          if($conexion->connect_errno){
+          echo "Fallo al conectar con MySQL" . $conexion->connect_errno;
+          }else{
+
+            //Lo que tiene que mostrar por pantalla
+            //Variables insertivas
+            $id=$_POST['id'];
+            $nom=$_POST['nombre'];
+            $ape=$_POST['apellidos'];
+            $edad=$_POST['edad'];
+            $curso=$_POST['curso'];
+            $puntu=$_POST['puntua'];
+
+            $info = "UPDATE usuarios SET nombre='".$nom."',apellidos='".$ape."',edad='".$edad."',curso='".$curso."',puntuacion='".$puntu." ' WHERE id=$id" ;
+            $resultado=$conexion->query("SELECT * FROM usuarios  ORDER BY id" );
+
+            if ($conexion->query($info) === TRUE) {
+               echo " <br> Actualizado correctamente";
+            }else{
+               echo "Error: " . $info . "<br>" . $conexion->error;
+
+                                     }
+                 while ($fila=$resultado->fetch_assoc()) {
+                 echo "<table>" . $fila['id']." <tr> ".$fila['nombre']." <tr> ".$fila['apellidos']." <tr> ".$fila['edad']." <tr> ".$fila['curso']." <tr> ".$fila['puntuacion'];
+                                                         }
+            }
+
+            // Comprobar si està vacio
+          if (empty($_POST['nombre'] && $_POST['apellidos'] && $_POST['edad'] && $_POST['curso'])) {
+          echo "<h1>"."Algun campo esta vacio" . "</h1>";
+                                                }
+
+
+
+            }//cierre funcion Actualizado
+
+
 //tratamiento de datos
 
 if (isset($_GET['actualizado'])) {
@@ -132,7 +177,9 @@ if (isset($_GET['actualizado'])) {
     insertado();
   }else if(isset($_GET['borrado'])){
     borrado();
-  }else if(isset($_GET['listar'])){
+  }
+  //Listar
+  if(isset($_GET['listar'])){
      listar();
 }
 
