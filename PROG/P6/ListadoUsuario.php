@@ -7,7 +7,7 @@
   <body>
 <!-- Listar usuarios -->
 <form action="ListadoUsuario.php?listar=true" method="POST">
-<input type="submit" value="LISTAR USUARIOS" >
+<input type="submit" value="LISTAR USUARIOS/ACTUALIZAR LISTA" >
 </form>
 
     <?php
